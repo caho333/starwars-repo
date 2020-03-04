@@ -1,34 +1,62 @@
 import React, { Component, Fragment } from "react";
 import "./App.css";
 import { getAllPlanets } from "./helper/api";
+import { sortByName } from "./helper/helperFunctions";
 import Chart from "./components/Chart";
 import StickyHeadTable from "./components/Table";
+import SelectCategory from "./components/SelectTable";
 
 class App extends Component {
   componentDidMount() {
     let planets = [];
-    new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       getAllPlanets("https://swapi.co/api/planets/", planets, resolve, reject);
-    }).then(res => {
-      this.setState({
-        planets: res
-      });
     });
+
+    promise
+      .then(planets => {
+        planets.sort((a, b) => sortByName(a, b));
+        this.setState({
+          planets: planets,
+          category: "population"
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
+  updateCategory = newCategory => {
+    this.setState({ category: newCategory });
+  };
 
   render() {
     return (
       <div className='App container mt-5'>
-        <h2>StarWars Info Guide</h2>
+        <img
+          src={process.env.PUBLIC_URL + "/starwarslogo.jpg"}
+          alt='baby yoda'
+          height='200'
+          width='200'
+        />
+        <h2>StarWars Planet Guide</h2>
         {this.state ? (
           <Fragment>
-            <Chart planets={this.state.planets && this.state.planets} />
+            <SelectCategory
+              category={this.state.category}
+              updateCategory={this.updateCategory}
+            />
+            <Chart
+              category={this.state.category}
+              planets={this.state.planets && this.state.planets}
+            />
+            <h2>Planet Chart</h2>
             <StickyHeadTable
               planets={this.state.planets && this.state.planets}
             />
           </Fragment>
         ) : (
-          <h3>Loading...</h3>
+          <h3>Waiting on the Force...</h3>
         )}
       </div>
     );

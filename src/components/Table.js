@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -8,10 +8,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
-  { id: "population", label: "Population", minWidth: 100 },
+  { id: "population", label: "Population", minWidth: 100, align: "center" },
   {
     id: "rotation_period",
     label: "Rotation Period",
@@ -22,29 +21,25 @@ const columns = [
     id: "orbital_period",
     label: "Orbital Period",
     minWidth: 170,
-    align: "center",
-    format: value => value.toLocaleString()
+    align: "center"
   },
   {
     id: "diameter",
     label: "Diameter",
     minWidth: 170,
-    align: "center",
-    format: value => value.toLocaleString()
+    align: "center"
   },
   {
     id: "climate",
     label: "Climate",
     minWidth: 170,
-    align: "center",
-    format: value => value.toLocaleString()
+    align: "center"
   },
   {
     id: "surface_water",
     label: "Surface Water",
     minWidth: 170,
-    align: "center",
-    format: value => value.toLocaleString()
+    align: "center"
   }
 ];
 
@@ -59,8 +54,8 @@ const useStyles = makeStyles({
 
 const StickyHeadTable = ({ planets }) => {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -111,7 +106,7 @@ const StickyHeadTable = ({ planets }) => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[10, 25, { label: "All", value: -1 }]}
         component='div'
         count={planets.length}
         rowsPerPage={rowsPerPage}
