@@ -4,7 +4,7 @@ import { getAllPlanets } from "./helper/api";
 import { sortByName } from "./helper/helperFunctions";
 import Chart from "./components/Chart";
 import StickyHeadTable from "./components/Table";
-import SelectCategory from "./components/SelectTable";
+import SelectCategory from "./components/SelectCategory";
 
 class App extends Component {
   componentDidMount() {

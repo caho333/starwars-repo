@@ -22,7 +22,6 @@ const SelectCategory = ({ updateCategory, category }) => {
   const [open, setOpen] = useState(false);
 
   const handleChange = event => {
-    console.log(event.target.value);
     updateCategory(event.target.value);
   };
 
