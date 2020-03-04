@@ -15,7 +15,7 @@ const Chart = ({ planets, category }) => {
       layout={{
         width: 1000,
         height: 500,
-        title: `Planet ${title}`,
+        title: `Planets' ${title}`,
         yaxis: {
           title: `${title}`,
           automargin: true,
