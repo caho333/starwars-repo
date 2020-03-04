@@ -14,10 +14,10 @@ class App extends Component {
     });
 
     promise
-      .then(planets => {
-        planets.sort((a, b) => sortByName(a, b));
+      .then(galaxy => {
+        galaxy.sort((a, b) => sortByName(a, b));
         this.setState({
-          planets: planets,
+          planets: galaxy,
           category: "population"
         });
       })
