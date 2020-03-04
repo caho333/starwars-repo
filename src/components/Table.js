@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 const StickyHeadTable = ({ planets }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -106,7 +106,7 @@ const StickyHeadTable = ({ planets }) => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, { label: "All", value: -1 }]}
+        rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
         component='div'
         count={planets.length}
         rowsPerPage={rowsPerPage}

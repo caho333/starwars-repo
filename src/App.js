@@ -43,7 +43,7 @@ class App extends Component {
         {this.state ? (
           <Fragment>
             <SelectCategory
-              category={this.state.category}
+              category={this.state.category && this.state.category}
               updateCategory={this.updateCategory}
             />
             <Chart
