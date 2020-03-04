@@ -50,7 +50,7 @@ class App extends Component {
               category={this.state.category}
               planets={this.state.planets && this.state.planets}
             />
-            <h2>Planet Chart</h2>
+            <h2>Planets' Info Table</h2>
             <StickyHeadTable
               planets={this.state.planets && this.state.planets}
             />
