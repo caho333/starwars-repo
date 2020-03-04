@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { columns } from "../helper/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -8,40 +9,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-const columns = [
-  { id: "name", label: "Name", minWidth: 170 },
-  { id: "population", label: "Population", minWidth: 100, align: "center" },
-  {
-    id: "rotation_period",
-    label: "Rotation Period",
-    minWidth: 170,
-    align: "center"
-  },
-  {
-    id: "orbital_period",
-    label: "Orbital Period",
-    minWidth: 170,
-    align: "center"
-  },
-  {
-    id: "diameter",
-    label: "Diameter",
-    minWidth: 170,
-    align: "center"
-  },
-  {
-    id: "climate",
-    label: "Climate",
-    minWidth: 170,
-    align: "center"
-  },
-  {
-    id: "surface_water",
-    label: "Surface Water",
-    minWidth: 170,
-    align: "center"
-  }
-];
 
 const useStyles = makeStyles({
   root: {
